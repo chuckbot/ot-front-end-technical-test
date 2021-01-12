@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import { getData } from "./services/getData"
+import { getData } from "./services/getData";
+import { DataTable } from './components';
 
 const URL = "https://demo6922545.mockable.io/";
 
 function App() {
-  const [data, setData] = useState({});
+  const [testData, setTestData] = useState({});
 
   useEffect(() => {
     getData(URL).then((response) => {
       if (response) {
-        console.log(response);
-        setData(response);
+        setTestData(response);
       }
     }).catch(e => {
-      console.log(e)
-    })
-  }, [])
+      console.log(e);
+    });
+  }, []);
+
+  const content = testData.data ? <DataTable data={testData.data} /> : <div>Loading</div>;
+
 
   return (
     <div className="App">
-      <p>
-        Feel free to edit <code>src/App.js</code> and save to reload.
-      </p>
+      <h3>Genes associated with lung carcinoma</h3>
+      {content}
     </div>
   );
 }
