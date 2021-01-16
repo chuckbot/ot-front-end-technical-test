@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./DataTable.css";
 import { DataProps } from "../../helpers/types";
+import { RadarScoreChart } from "../../components";
 
 function DataTable(props) {
   const { data } = props;
@@ -43,10 +44,11 @@ function DataTable(props) {
     ];
 
     if (isExpanded) {
+      const { datatypes } = item.association_score;
       itemRow.push(
         <tr key={`${item.id}-expanded`}>
-          <td colSpan="5">
-            <div>This is a test</div>
+          <td colSpan="5" className="charts">
+              <RadarScoreChart dataTypes={datatypes} />
           </td>
         </tr>
       );
