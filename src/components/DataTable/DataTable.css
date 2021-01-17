@@ -10,10 +10,7 @@ td.expand {
   color: #398AC8;
   font-weight: bold;
   cursor: pointer;
-}
-
-td.charts {
-  display: flex;
+  text-align: center;
   padding: 0;
 }
 
@@ -21,5 +18,14 @@ table,
 td,
 th {
   border: 1px solid lightgray;
+  padding: 10px 30px 10px 10px;
+  text-align: left;
 }
 
+
+
+.charts {
+  display: flex;
+  height: 400px;
+  width: 100%;
+}

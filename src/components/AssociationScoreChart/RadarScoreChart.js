@@ -10,16 +10,31 @@ import { TypesProps } from "../../helpers/types";
 
 function RadarScoreChart(props) {
   const { dataTypes } = props;
-  const dataChart = Object.entries(dataTypes).map((el) => Object.assign({ name: el[0], value: el[1] }));
+  const dataChart = Object.entries(dataTypes).map((el) =>
+    Object.assign({ name: el[0], value: el[1] })
+  );
 
   return (
     <div>
       <p>Association Score vs Data Type</p>
-      <RadarChart cx={250} cy={125} outerRadius={100} width={500} height={250} data={dataChart}>
+      <RadarChart
+        cx={250}
+        cy={125}
+        outerRadius={100}
+        width={500}
+        height={250}
+        data={dataChart}
+      >
         <PolarGrid />
         <PolarAngleAxis dataKey="name" />
-        <PolarRadiusAxis />
-        <Radar dataKey="value" stroke="#398AC8" fill="#398AC8" fillOpacity={0.5} dot />
+        <PolarRadiusAxis angle={90} />
+        <Radar
+          dataKey="value"
+          stroke="#398AC8"
+          fill="#398AC8"
+          fillOpacity={0.5}
+          dot
+        />
       </RadarChart>
     </div>
   );

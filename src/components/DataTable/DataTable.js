@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./DataTable.css";
 import { DataProps } from "../../helpers/types";
 import { RadarScoreChart } from "../../components";
+import { BarScoreChart } from "../../components";
 
 function DataTable(props) {
   const { data } = props;
@@ -47,8 +48,11 @@ function DataTable(props) {
       const { datatypes } = item.association_score;
       itemRow.push(
         <tr key={`${item.id}-expanded`}>
-          <td colSpan="5" className="charts">
+          <td colSpan="5">
+            <div className="charts">
+              <BarScoreChart dataTypes={datatypes} />
               <RadarScoreChart dataTypes={datatypes} />
+            </div>
           </td>
         </tr>
       );
